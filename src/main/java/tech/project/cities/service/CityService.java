@@ -14,15 +14,15 @@ import tech.project.cities.repository.CityRepository;
 @Service
 public class CityService {
 	
+	private CityRepository repository;
+
 	@Autowired
-	private final CityRepository repository;
-	
 	public CityService(CityRepository cityRepository) {
 		this.repository = cityRepository;
 	}
 	
-	public Iterable<City> addCities(List<City> cities) {
-		return repository.saveAll(cities);
+	public void addCities(List<City> cities) {
+		repository.saveAll(cities);
 	}
 	
 	public List<City> getAllCities(){

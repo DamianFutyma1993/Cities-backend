@@ -1,14 +1,7 @@
 package tech.project.cities.controller;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.ArrayList;
+
 import java.util.List;
-
-import javax.annotation.PostConstruct;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -25,9 +18,9 @@ import tech.project.cities.service.CityService;
 @RequestMapping("/city")
 public class CityController {
 	
-	@Autowired
-	CityService service;
+	private CityService service;
 	
+	@Autowired
 	public CityController(CityService cityService) {
 		this.service = cityService;
 	}
@@ -51,31 +44,5 @@ public class CityController {
 	public ResponseEntity<City> updateCity(@RequestBody City city){
 		City updatedCity = service.updateCity(city);
 		return new ResponseEntity<>(updatedCity, HttpStatus.OK);
-	}
-	
-	/**
-	 * Method initialize date add the application start
-	 */
-	@PostConstruct
-	public void initData() {
-		String line = "";
-		List<City> listOfAllCities = new ArrayList<>();
-		
-		ClassLoader classLoader = getClass().getClassLoader();
-		File file = new File(classLoader.getResource("cities.csv").getFile());
-		
-		try(BufferedReader reader = new BufferedReader(new FileReader(file))) {
-			while((line = reader.readLine()) != null) {
-				String [] data = line.split(",");
-				City city = new City();
-				city.setId(Long.parseLong(data[0]));
-				city.setName(data[1]);
-				city.setImageUrl(data[2]);
-				listOfAllCities.add(city);
-			}
-			service.addCities(listOfAllCities);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
 	}
 }
