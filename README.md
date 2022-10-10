@@ -1,5 +1,10 @@
 # Cities-backend
 
-Projekt działa na bazie danych h2 więc aby go uruchomić nie są potrzebne dodatkowe połączenia bazodanowe.
-Wystarczy sklonować projekt, uruchomić go w IDE i wcisnąć run. Projekt zajmuje port 8080.
+How to start an application:
 
+1. Install a Java https://www.java.com/en/download/help/windows_manual_download.html
+2. Install Maven and add it to the path variable https://maven.apache.org/install.html
+3. Go to the main project folder and use this command <i>mvn install</i>
+4. Next use this command <i>mvn spring-boot:run</i>
+
+Application will be avaliable on the port 8080.
