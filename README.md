@@ -7,4 +7,4 @@ How to start an application:
 3. Go to the main project folder and use this command <i>mvn install</i>
 4. Next use this command <i>mvn spring-boot:run</i>
 
-Application will be avaliable on the port 8080.
+Application will be available on the port 8080.
